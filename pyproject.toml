@@ -1,22 +1,26 @@
 # See PEP-517 and PEP-518 for details.
 
 [build-system]
-requires = ["setuptools", "setuptools_scm[toml]>=3.4", "wheel"]
+requires = ["setuptools", "setuptools_scm[toml]>=6.2", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "nag-gs"
-version = "0.0.0"
+# version = "0.0.0"
 description = "NAG-GS: Nesterov Accelerated Gradients with Gauss-Siedel splitting"
 readme = "README.md"
 requires-python = ">=3.8"
 license = {text = "MIT"}
 authors = [
-    {name = "Daniel Bershatsky", email = "d.bershatsky2@skoltech.ru"},
+    {name = "Daniel Bershatsky", email = "daniel.bershatsky@gmail.com"},
+    {name = "Daniil Merkulov", email = "bratishka.mipt@gmail.com"},
 ]
 keywords = [
     "optimizer",
+    "accelerated-optimizer",
     "momentum-optimizer",
+    "machine-learning",
+    "optimization-and-control",
 ]
 classifiers = [
     "Development Status :: 3 - Alpha",  # 4 - Beta, 5 - Production/Stable
@@ -32,14 +36,24 @@ classifiers = [
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
 ]
 dependencies = [
     "numpy~=1.22",
 ]
+dynamic = ["version"]
 
 [project.optional-dependencies]
 test = [
-    "pytest >= 6.0.0",
+    "pytest>=6.0.0",
+]
+jax = [
+    "chex>=0.1.5",
+    "jax>=0.3.20",
+    "jax>=0.1.3",
+]
+pytorch = [
+    "torch~=1.11",
 ]
 
 [project.urls]
