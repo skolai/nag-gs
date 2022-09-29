@@ -46,7 +46,6 @@ class TestNAGOptimizer:
         else:
             pytest.fail(False, 'No convergence.')
 
-    @pytest.mark.skip
     def test_against_reference(self):
         import torch as T
         from nag_gs.nag_gs_pytorch import NAG4
