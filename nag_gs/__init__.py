@@ -2,21 +2,24 @@
 and PyTorch.
 """
 
-backends = []
+__all__ = ()
+__backend__ = []
 
 try:
     from .nag_gs_jax import nag4, nag_gs
-    backends.append('jax')
+    __all__ += ('nag4', 'nag_gs')
+    __backend__.append('jax')
 except ImportError:
     pass
 
 try:
     from .nag_gs_pytorch import NAG4
-    backends.append('pytorch')
+    __all__ += ('NAG4', )
+    __backend__.append('pytorch')
 except ImportError:
     pass
 
-if not backends:
+if not __backend__:
     import warnings
     warnings.warn('It seems that there is no neither JAX/Optax nor PyTorch.',
                   RuntimeWarning)

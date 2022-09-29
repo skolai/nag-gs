@@ -1,5 +1,6 @@
-"""Module nag implements NAG-GS optimizer. There are two implementations. One
-of them keeps gamma constant and another one performs full NAG-GS step.
+"""Module nag_gs_jax implements NAG-GS optimizer in JAX/Optax. There are two
+implementations. One of them keeps gamma constant and another one performs full
+NAG-GS step.
 """
 
 import chex
@@ -133,4 +134,15 @@ def scale_by_nag_gs(alpha: ScalarOrSchedule, mu: float, gamma: float,
 
 def nag_gs(alpha: ScalarOrSchedule = 0.05, mu: float = 1.0, gamma: float = 1.5,
            dtype: Optional[Any] = None) -> GradientTransformation:
+    """Create NAG-GS optimizer.
+
+    Args:
+        alpha: Learning rate.
+        mu: Momentum mu.
+        gamma: Gamma factor for integration along time.
+        dtype: Optional `dtype` to be used for the first order accumulator; if
+               `None` then the `dtype` is inferred from `params` and `updates`.
+    Returns:
+        The corresponding `GradientTransformation`.
+    """
     return scale_by_nag_gs(alpha, mu, gamma, dtype)
