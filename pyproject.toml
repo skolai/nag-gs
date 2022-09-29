@@ -1,0 +1,59 @@
+# See PEP-517 and PEP-518 for details.
+
+[build-system]
+requires = ["setuptools", "setuptools_scm[toml]>=3.4", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nag-gs"
+version = "0.0.0"
+description = "NAG-GS: Nesterov Accelerated Gradients with Gauss-Siedel splitting"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+authors = [
+    {name = "Daniel Bershatsky", email = "d.bershatsky2@skoltech.ru"},
+]
+keywords = [
+    "optimizer",
+    "momentum-optimizer",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",  # 4 - Beta, 5 - Production/Stable
+    "License :: OSI Approved :: MIT License",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Mathematics",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Intended Audience :: Science/Research",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+]
+dependencies = [
+    "numpy~=1.22",
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest >= 6.0.0",
+]
+
+[project.urls]
+homepage = "https://github.com/skolai/na-gs"
+documentation = "https://github.com/skolai/na-gs"
+repository = "https://github.com/skolai/na-gs"
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q -m 'not benchmark'"
+testpaths = ["tests"]
+
+[tool.setuptools.packages.find]
+namespaces = true
+
+[tool.setuptools_scm]
+write_to = "nag_gs/version.py"
