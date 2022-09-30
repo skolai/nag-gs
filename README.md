@@ -61,3 +61,17 @@ for _ in range(200):
     opt.zero_grad()
 print(params.detach().numpy())  # [0.00029082 0.00029082 0.00029082]
 ```
+
+## Citation
+
+```bibtex
+@misc{leplat2022nag,
+  doi = {10.48550/arxiv.2209.14937},
+  url = {https://arxiv.org/abs/2209.14937},
+  author = {Leplat, Valentin and Merkulov, Daniil and Katrutsa, Aleksandr and Bershatsky, Daniel and Oseledets, Ivan},
+  title = {NAG-GS: Semi-Implicit, Accelerated and Robust Stochastic Optimizers},
+  publisher = {arXiv},
+  year = {2022},
+  copyright = {arXiv.org perpetual, non-exclusive license}
+}
+```
