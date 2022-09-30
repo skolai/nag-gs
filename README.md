@@ -7,7 +7,7 @@
 **NAG-GS** is a novel, robust and accelerated stochastic optimizer that relies
 on two key elements: (1) an accelerated Nesterov-like Stochastic Differential
 Equation (SDE) and (2) its semi-implicit Gauss-Seidel type discretization.
-For theoretical background we refer user to the original paper.
+For theoretical background we refer user to [the original paper][1].
 
 ## Installation
 
@@ -62,6 +62,9 @@ for _ in range(200):
 print(params.detach().numpy())  # [0.00029082 0.00029082 0.00029082]
 ```
 
+More details about quadratic and non-convex cases can be found in the
+[Jupyter-notebook][2] or in the [Colab][3].
+
 ## Citation
 
 ```bibtex
@@ -75,3 +78,7 @@ print(params.detach().numpy())  # [0.00029082 0.00029082 0.00029082]
   copyright = {arXiv.org perpetual, non-exclusive license}
 }
 ```
+
+[1]: https://arxiv.org/abs/2209.14937
+[2]: notebooks/quadratic-and-non-contex-cases.ipynb
+[3]: https://colab.research.google.com/drive/1ILOtomhz7rOt2vFuXe1vgWKELRiBNB9s
