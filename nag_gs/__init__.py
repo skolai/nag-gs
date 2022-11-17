@@ -13,8 +13,8 @@ except ImportError:
     pass
 
 try:
-    from .nag_gs_pytorch import NAG4
-    __all__ += ('NAG4', )
+    from .nag_gs_pytorch import NAG4, NAGGS
+    __all__ += ('NAG4', 'NAGGS')
     __backend__.append('pytorch')
 except ImportError:
     pass
