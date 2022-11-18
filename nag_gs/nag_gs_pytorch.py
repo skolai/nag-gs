@@ -157,7 +157,7 @@ def nag_gs(state: List[T.Tensor], params: List[T.Tensor],
     gammas_out = []
     for gamma, gs, xs, vs in zip(gammas, grads, params, state):
         # 1. Update state: variable v.
-        b = alpha * mu / alpha * mu + gamma
+        b = alpha * mu / (alpha * mu + gamma)
         vs.mul_(1 - b)
         vs.add_(xs, alpha=b)
         vs.add_(gs, alpha=-b / mu)
