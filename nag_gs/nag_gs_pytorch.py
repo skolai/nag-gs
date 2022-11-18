@@ -133,7 +133,7 @@ class NAGGS(T.optim.Optimizer):
             grads = []
             gammas = []
 
-            for p in filter(lambda x: x is not None, group['params']):
+            for p in filter(lambda x: x.grad is not None, group['params']):
                 if len(param_state := self.state[p]) == 0:
                     param_state['state'] = T.clone(p).detach()
                 state.append(param_state['state'])
@@ -156,19 +156,18 @@ def nag_gs(state: List[T.Tensor], params: List[T.Tensor],
     """
     gammas_out = []
     for gamma, gs, xs, vs in zip(gammas, grads, params, state):
-        # 1. Update state: variable v.
-        b = alpha * mu / alpha * mu + gamma
+        # Update constants
+        a = alpha / (alpha + 1)
+        b = alpha * mu / (alpha * mu + gamma)
+        gamma = (1-a)*gamma + a*mu
+        gammas_out.append(gamma)
+        
+        # Update state v
         vs.mul_(1 - b)
         vs.add_(xs, alpha=b)
         vs.add_(gs, alpha=-b / mu)
-
-        # 2. Update gamma coefficient.
-        gamma = (alpha * mu + gamma) / (1 + alpha)
-        gammas_out.append(gamma)
-
-        # 3. Update parameters: variable x.
-        #   x <- (1 - a) x  + a v
-        a = alpha / (alpha + 1)
+        
+        # Update parameters x
         xs.mul_(1 - a)
         xs.add_(vs, alpha=a)
 
