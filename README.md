@@ -11,7 +11,7 @@ For theoretical background we refer user to [the original paper][1].
 
 ## Installation
 
-Package installation is pretty straight forward in assumtions that a user has
+Package installation is pretty straight forward assuming that a user has
 already installed JAX/Optax or PyTorch.
 
 ```shell
