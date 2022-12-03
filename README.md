@@ -62,7 +62,7 @@ for _ in range(200):
 print(params.detach().numpy())  # [0.00029082 0.00029082 0.00029082]
 ```
 
-More details about quadratic and non-convex cases can be found in the
+Additional numerical tests including quadratic functions and a small-size non-convex function (with noisy gradients) can be found in the
 [Jupyter-notebook][2] or in the [Colab][3].
 
 ## Citation
